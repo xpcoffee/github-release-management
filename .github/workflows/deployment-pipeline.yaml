@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "production-jp"
     steps:
-      - run: echo "Deploying to ${{ ENVIRONMENT.ENV }}..."
+      - run: echo "Deploying to ${{ env.env }}..."
       - run: echo "Done."
       - run: echo "Monitoring health..."
       - run: echo "Done."
