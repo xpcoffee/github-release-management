@@ -9,8 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     environment: "pre-production"
     steps:
+      - id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
+      - name: Tag commit
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.date.outputs.date }}-deployed-pre-production",
+              sha: context.sha
+            })
       - run: echo "Running tests..."
       - run: echo "Done."
 
@@ -19,10 +31,20 @@ jobs:
     runs-on: ubuntu-latest
     environment: "production-eu"
     steps:
+      - id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
-      - run: echo "Monitoring health..."
-      - run: echo "Done."
+      - name: Tag commit
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.date.outputs.date }}-deployed-production-eu",
+              sha: context.sha
+            })
 
   "production-gate-a":
     needs: "production-eu"
@@ -36,16 +58,36 @@ jobs:
     runs-on: ubuntu-latest
     environment: "production-us"
     steps:
+      - id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
-      - run: echo "Monitoring health..."
-      - run: echo "Done."
+      - name: Tag commit
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.date.outputs.date }}-deployed-production-us",
+              sha: context.sha
+            })
   "production-jp":
     needs: "production-gate-a"
     runs-on: ubuntu-latest
     environment: "production-jp"
     steps:
+      - id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
-      - run: echo "Monitoring health..."
-      - run: echo "Done."
+      - name: Tag commit
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.date.outputs.date }}-deployed-production-jp",
+              sha: context.sha
+            })
