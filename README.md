@@ -2,4 +2,4 @@
 
 A repo to play with release managment using github.
 
-See [the workflow](./.github/workflows/deployment-pipeline.yaml)
+See [the workflow](./.github/workflows/deployment-pipeline.yaml).
