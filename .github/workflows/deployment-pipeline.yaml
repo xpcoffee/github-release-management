@@ -32,7 +32,7 @@ jobs:
       - run: echo "Enabling next wave of production deployments..."
 
   "production-us":
-    needs: "production-wave-2"
+    needs: "production-gate-a"
     runs-on: ubuntu-latest
     environment: "production-us"
     steps:
@@ -41,7 +41,7 @@ jobs:
       - run: echo "Monitoring health..."
       - run: echo "Done."
   "production-jp":
-    needs: "production-wave-2"
+    needs: "production-gate-a"
     runs-on: ubuntu-latest
     environment: "production-jp"
     steps:
