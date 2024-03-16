@@ -10,7 +10,7 @@ jobs:
     environment: "pre-production"
     steps:
       - id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
       - name: Tag commit
@@ -32,7 +32,7 @@ jobs:
     environment: "production-eu"
     steps:
       - id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
       - name: Tag commit
@@ -59,7 +59,7 @@ jobs:
     environment: "production-us"
     steps:
       - id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
       - name: Tag commit
@@ -78,7 +78,7 @@ jobs:
     environment: "production-jp"
     steps:
       - id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S')"
       - run: echo "Deploying to ${{ vars.ENV }}..."
       - run: echo "Done."
       - name: Tag commit
