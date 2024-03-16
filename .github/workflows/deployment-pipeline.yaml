@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "pre-production"
     steps:
-      - run: echo "Deploying to ${{ env.env }}..."
+      - run: echo "Deploying to ${{ var.ENV }}..."
       - run: echo "Done."
       - run: echo "Running tests..."
       - run: echo "Done."
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "production-eu"
     steps:
-      - run: echo "Deploying to ${{ env.env }}..."
+      - run: echo "Deploying to ${{ var.ENV }}..."
       - run: echo "Done."
       - run: echo "Monitoring health..."
       - run: echo "Done."
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "production-us"
     steps:
-      - run: echo "Deploying to ${{ env.env }}..."
+      - run: echo "Deploying to ${{ var.ENV }}..."
       - run: echo "Done."
       - run: echo "Monitoring health..."
       - run: echo "Done."
@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "production-jp"
     steps:
-      - run: echo "Deploying to ${{ env.env }}..."
+      - run: echo "Deploying to ${{ var.ENV }}..."
       - run: echo "Done."
       - run: echo "Monitoring health..."
       - run: echo "Done."
