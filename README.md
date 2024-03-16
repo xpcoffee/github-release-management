@@ -1,2 +1,2 @@
 # github-release-management
-A repo to play with release managment using github
+A repo to play with release managment using github.
